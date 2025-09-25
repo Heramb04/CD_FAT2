@@ -1,0 +1,66 @@
+== Present working directory ==
+/c/Users/lacs.lab/exam
+
+== Current user ==
+lacs.lab
+
+== Memory resources available ==
+free not found, showing from /proc/meminfo:
+MemTotal:       16545952 kB
+MemFree:        11498944 kB
+
+== Disk space available ==
+Filesystem                                    Size  Used Avail Use% Mounted on
+C:/Users/lacs.lab/AppData/Local/Programs/Git  307G   59G  248G  20% /
+D:                                            312G   45G  268G  15% /d
+E:                                            313G  105M  313G   1% /e
+
+== Files in current directory ==
+total 30
+drwxr-xr-x 1 lacs.lab 1049089    0 Sep 24 23:31 .
+drwxr-xr-x 1 lacs.lab 1049089    0 Sep 24 23:36 ..
+drwxr-xr-x 1 lacs.lab 1049089    0 Sep 24 23:38 .git
+-rw-r--r-- 1 lacs.lab 1049089 4304 Sep 24 23:32 README.md
+-rw-r--r-- 1 lacs.lab 1049089  571 Sep 24 23:42 script.log
+-rwxr-xr-x 1 lacs.lab 1049089  700 Sep 24 23:42 script.sh
+
+== Contents of this script (script.sh) ==
+#!/usr/bin/env bash
+set -euo pipefail
+
+echo "== Present working directory =="
+pwd
+
+echo
+echo "== Current user =="
+whoami
+
+echo
+echo "== Memory resources available =="
+
+# Try 'free -h' first, fallback to /proc/meminfo
+if command -v free >/dev/null 2>&1; then
+    free -h
+else
+    echo "free not found, showing from /proc/meminfo:"
+    grep -E 'MemTotal|MemFree|MemAvailable' /proc/meminfo
+fi
+
+echo
+echo "== Disk space available =="
+
+# Try 'df -h' first, fallback to lsblk
+if command -v df >/dev/null 2>&1; then
+    df -h
+else
+    echo "df not found, showing from lsblk:"
+    lsblk
+fi
+
+echo
+echo "== Files in current directory =="
+ls -la
+
+echo
+echo "== Contents of this script (script.sh) =="
+cat "$0"

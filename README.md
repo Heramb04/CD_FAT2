@@ -12,7 +12,7 @@
 
 ### Connections:
 
-Now, how is all this connected to my work? 
+Now, how is all this connected to DevOps principles? 
 
 - **The script** (script.sh) automates environment checks (pwd, user, memory, disk, file listing). Automating routine diagnostics whioch will become dependable, and quick.
 - Logging the script output to script.log creates a traceable artifact. This mirrors how pipelines capture logs for troubleshooting.
@@ -45,4 +45,49 @@ and entering vim for editing using
 
 nano README.md
 
-- Then i wrote my content and saved the file, 
+- Then i wrote my content and saved the file.
+
+- Then i creted script.sh file and then a log files to store logs called script.log
+
+- I made the sh file executable using 
+
+chmod +x script.sh
+
+- Then i executed the scrpit once to store the logs into the script.log file
+
+./script.sh > script.log
+
+- Now obviously before pushing, as a sane human being i verified if all my files exist using 
+
+ls -la
+
+- Now i initialised an empty git repo in the exam directory and created a branch out of it called "feature" and kept my main branch clean
+
+- I added all the files using 
+
+git add README.md script.sh script.log
+
+- I then added a commit using 
+
+git commit -m and added a commit message which i dont remember now
+
+- And then i added a remote origin with my repo's link using
+
+git remote add origin (my repo link)
+
+- And yes then i finnaly pushed on the about branch using 
+
+git push -u origin feature
+
+- And yes obviously it prompted me with login so i used a Personal Access Token.
+
+- Now after pushing i deliberately left some errors so i could demonstrate CI/CD although on an icomparable level asto how its used, so yes some part of this is written after pushing. 
+
+
+**THANK YOU FOR YOUR TIME**  
+
+
+
+
+
+
